@@ -1,0 +1,26 @@
+
+<table class="table table-sm table-hover">
+  <thead>
+    <th>CustomerID</th>  
+    <th>Title</th>
+    <th>CompanyName</th>
+    <th>ContactName</th>
+  
+  </thead>
+ 
+  <tr *ngFor="let employee of employeeService.employeeList">
+    <td>{{employee.CustomerID}} </td>
+    <td>{{employee.ContactTitle}}</td>
+  <td>  {{employee.CompanyName}}</td>
+    <td>{{employee.ContactName}}</td>
+    
+    <td>
+      <a class="btn" (click)="showForEdit(employee)">
+        <i class="fa fa-pencil-square-o"></i>
+      </a>
+      <a class="btn text-danger" (click)="onDelete(employee.CustomerID)">
+        <i class="fa fa-trash-o"></i>
+      </a>
+    </td>
+  </tr>
+</table>

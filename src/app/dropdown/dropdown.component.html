@@ -1,0 +1,33 @@
+<p>This dropdown uses customized default values.</p>
+
+<div ngbDropdown #myDrop="ngbDropdown">
+  <!--onKey(multicolumn.value);<button class="btn btn-outline-primary" id="dropdownConfig" ngbDropdownToggle>Toggle</button> -->
+  <!-- <input  #multicolumn  (keyup)="applyFilter($event.target.value)"/> (keyup.enter)="onKey(multicolumn.value)" -->
+  <input [(ngModel)]="search"  #multicolumn     (keyup)="$event.stopPropagation(); myDrop.open()"  tabundex="0"/>
+  <img src="../assets/asterisk.png" style="height: 10px" ngbDropdownToggle #imgastreik /> 
+  
+  <div ngbDropdownMenu aria-labelledby="imgastreik" #dropdowndiv>
+    <div class="dropdown-item">
+        
+      <table class="table table-sm table-hover">
+          <thead>
+            <th>CustomerID</th>  
+            <th>CompanyName</th>
+            <th>ContactName</th>
+            <th>Title</th>
+          </thead>
+          <!-- <tr *ngFor="let  employee of employeeList | filter : 'CustomerID' : searchString; let i = index"> -->
+          <tr *ngFor="let employee of employeeList | search :search | paginate: { itemsPerPage: 2, currentPage: p };let i = index; ">
+            <td>{{employee.CustomerID}} </td>
+            <td> {{employee.CompanyName}}</td>
+            <td>{{employee.ContactName}}</td>
+            <td>{{employee.ContactTitle}}</td>
+          </tr>
+        </table>
+      </div>  
+      <!-- <ngb-pagination [collectionSize]="30" [page]="1" [directionLinks]="true" [boundaryLinks]="true" ></ngb-pagination>    -->
+      <pagination-controls  (pageChange)="p = $event;" (click)="$event.stopPropagation(); myDrop.open()" ></pagination-controls>
+      </div>
+    
+  </div>
+  

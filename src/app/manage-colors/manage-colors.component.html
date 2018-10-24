@@ -1,0 +1,9 @@
+<div>
+    <label>Summary: </label>
+    <select (change)="filterForeCasts($event.target.value)">
+        <option value="0">--All--</option>
+        <option *ngFor="let summary of summaries" value={{summary}}>
+            {{summary}}
+        </option>
+    </select>
+</div>

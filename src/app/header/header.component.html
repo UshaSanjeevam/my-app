@@ -1,0 +1,38 @@
+
+<nav class="navbar navbar-light dcss">
+<ul class="nav grey lighten-4 ">
+        <!-- <li class="nav-item">
+            <a class="nav-link "   [routerLink]="['das']">Home</a>
+        </li> -->
+        <li class="nav-item active">
+            <a class="nav-link"  [routerLink]="['weather-forecast']" routerLinkActive="active">Weather</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['dropdown']">Dropdown</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"  [routerLink]="['customers']">Customers</a>
+        </li>
+        <!-- <li class="nav-item">
+            <a class="nav-link active" [routerLink]="['progressbar']">ProgressBar</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" [routerLink]="['registration']">Registration</a>
+        </li> -->
+        <li class="nav-item">
+            <a class="nav-link active"  (click)="Logout()">Logout</a>
+        </li>
+       
+        
+    </ul>
+    <nav class="pull-right ">
+       
+            <i class="fa fa-user prefix white-text active"></i>
+            
+         <label for="form3" class="active">   {{username}}</label>
+       
+    </nav>
+  </nav>
+  
+    <router-outlet></router-outlet>
+    

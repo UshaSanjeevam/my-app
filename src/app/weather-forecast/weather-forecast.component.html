@@ -1,0 +1,105 @@
+<ng4-loading-spinner [threshold]="1000" [timeout]="3000"  [loadingText]="'Please wait...'" [zIndex]="9999"> </ng4-loading-spinner>
+<div class="p-3 mb-2 bg-info text-white v1">
+  <p class="text-center">Weather data</p>
+  <table class="container" *ngIf="weatherClass !=undefined" >
+    <tr>
+      <td class="float-left">
+        <tr>
+      <td class="text-white">
+         Current Location : {{weatherClass?.name}}
+      </td>
+    </tr>
+    <tr>
+      <td class="text-white">
+       Weather :   {{weatherClass?.type}}
+      </td>
+    </tr>
+    <tr>
+     <td class="text-white">Humidity : {{weatherClass?.humidity}}&#x25;</td>
+    </tr>
+    <tr>
+        <td class="text-white">Minimum Temperature : {{weatherClass?.tempMin}} &#8451;</td>
+    </tr>
+    <tr>
+        <td class="text-white">Maximum Temperature : {{weatherClass?.tempMax}} &#8451;</td>
+    </tr>
+  </td>
+  <td class="float-center">
+    <tr >
+    
+          <td ><img src="http://openweathermap.org/img/w/{{weatherClass?.image}}.png" class="mx-auto d-block" alt="Responsive image" width="100px"/></td>
+          <td class="text-white">{{weatherClass.temp}} &#8451;</td>
+    </tr>
+</td>
+     
+    </tr>
+  
+  </table>  
+</div>
+
+<div>
+<input  class="form-control mb-6" type="text" #location  placeholder="Other locations weather" (keydown.enter)="onSubmit($event, location.value);"/>
+ 
+  <div *ngFor="let dayWeather of forecast">
+      <div class="p-3 mb-2 bg-info text-white ">
+          <p class="text-center">Weather data</p>
+          <table class="container" >
+            <tr>
+              <td class="float-left">
+                <tr>
+              <td class="text-white">
+                  Location : {{dayWeather.name}}
+              </td>
+            </tr>
+            <!-- <tr>
+              <td>
+                  {{dayWeather.date |date:d}}
+              </td>
+            </tr> -->
+            <tr>
+              <td class="text-white">
+               Weather :   {{dayWeather.weather}}
+              </td>
+            </tr>
+            <tr>
+             <td class="text-white">Humidity : {{dayWeather.humidity}}&#x25;</td>
+            </tr>
+            <tr>
+                <td class="text-white">Minimum Temperature : {{dayWeather.tempMin}} &#8451;</td>
+            </tr>
+            <tr>
+                <td class="text-white">Maximum Temperature : {{dayWeather.tempMax}} &#8451;</td>
+            </tr>
+          </td>
+          <td class="float-center">
+            <tr >
+            
+                  <td ><img src="http://openweathermap.org/img/w/{{dayWeather.image}}.png" class="mx-auto d-block" alt="Responsive image" width="100px"/></td>
+                  <td class="text-white">{{dayWeather.temp}} &#8451;</td>
+            </tr>
+        </td>
+             
+            </tr>
+          
+          </table>  
+        </div>
+    <!-- <div >
+        <p>City Name{{dayWeather.name}}</p>
+        <p class="date">{{dayWeather.date | date: 'MMMMd'}}</p>
+       <img src="http://openweathermap.org/img/w/{{dayWeather.image}}.png" />
+      <p> Weather:{{dayWeather.weather}}</p>
+      <p>Temperature: {{dayWeather.temp}}&#8451;</p>
+      <p>Humidity:{{dayWeather.humidity}}&#x25;</p>
+    </div> -->
+  </div>
+</div>
+<!--==========================Screen=================================================-->
+ 
+  
+
+
+  
+
+
+
+

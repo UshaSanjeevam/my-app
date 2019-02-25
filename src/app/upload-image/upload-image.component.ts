@@ -37,7 +37,7 @@ export class UploadImageComponent implements OnInit {
     reader.readAsDataURL(this.fileToUpload);
   }
   OnSubmit(Caption,Image){
-    this.imageservice.postFile(Caption.value,this.fileToUpload).subscribe(
+    this.imageservice.postFiless(Caption.value,this.fileToUpload).subscribe(
       data=>{
         console.log('done');
         Caption.value=null;

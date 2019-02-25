@@ -7,6 +7,7 @@ import { NgForm } from '@angular/forms';
 import { User } from '../Shared/userModel';
 import { TokenParamas } from '../classes/tokenparamas';
 import { ToastrService } from 'ngx-toastr';
+import { userDetails } from '../classes/userDetails';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,8 +19,9 @@ export class LoginComponent  implements OnInit{
   readonly rootUrl = 'http://localhost:42515/';
   some:any[];
   username:string;
-     Password:string;
-   
+   Password:string;
+   tokenParams:TokenParamas;
+   userdetailsModel:userDetails; 
 
    constructor(private router:Router,
      private authenticateservice:loginAuthenticateService,private toastr: ToastrService) { 
@@ -41,7 +43,7 @@ export class LoginComponent  implements OnInit{
       this.router.navigate(['login']);
   }
   
-  tokenParams:TokenParamas;
+  
   DoLogin()
   {
     this.authenticateservice.login(this.username,this.Password)
@@ -53,8 +55,11 @@ export class LoginComponent  implements OnInit{
         if(localStorage.getItem('userToken') !=(null|| undefined))
         {
           localStorage.setItem('FormsLoginUserName', this.tokenParams.userName);
+          localStorage.setItem('UserGender', this.tokenParams.gender);
+          localStorage.setItem('USERID', this.username);  
           if(this.tokenParams.role=="user")
           {
+           
           this.router.navigate(['/dashboard']);
           }
           else if(this.tokenParams.role=="admin")
@@ -70,19 +75,21 @@ export class LoginComponent  implements OnInit{
    
    
    );
-  //  err => {
-  //   throw err;
-  // }
   }
   ngOnInit(){
-    // if(localStorage.getItem("pass")==(undefined || "undefined"))
-    // {
-    //   localStorage.setItem("pass","satisfiedWindows");
-    // }
-    // else  if(localStorage.getItem("pass")!=(undefined || "undefined"))
-    // {
-    //   return;
-    // }
+    this.windowsAuth();
   }
+  windowsAuth(){
+          this.authenticateservice.windowsAuth()
+             .subscribe(
+               result => {         
+              if (result) {
+    //             let returnUrl = this.activatedRoute.snapshot.queryParamMap.get('returnUrl');
+    localStorage.setItem("WindowsLoginUser","UKOTHIRALLA");
+                        this.router.navigate(['/dashboard']);         
+              }
+            },
+         )
+        } 
 
 }

@@ -4,5 +4,6 @@ export class TokenParamas{
     expires_in:string;
     userName:string;
     role:string;
+    gender:string;
     
 }

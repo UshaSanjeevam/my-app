@@ -1,0 +1,109 @@
+
+
+  <img src="assets/Images/Sunshine.jpg" class="wall">
+
+ 
+    <img src="assets/Images/Icon.jpg" class="c1" >
+ 
+
+<div style="margin-left: 179px;
+margin-top: -22px;">
+  <a [routerLink]="['user-profile']" style="color:black !important;    margin-left: 17px;">
+    <span>
+     <img src="assets/Images/Edit profile.jpg"   class="smallImages">
+    </span>  Edit profile
+   </a>
+
+  <a [routerLink]="['user-profile']" style="color:black !important;    margin-left: 17px;">
+    <span>
+     <img src="assets/Images/Activity_Log.png"   class="smallImages">
+    </span>  Activity log
+   </a>
+
+  <a [routerLink]="['user-profile']" style="color:black !important;    margin-left: 17px;">
+    <span>
+     <img src="assets/Images/more.png"  class="smallImages">
+    </span>  More 
+   </a>
+  </div>
+
+<table >
+  <tr>
+    <td style="font-size: 45px;
+    margin-left: 1%;">{{username}}</td>
+  </tr>
+  </table>
+  <table  *ngFor="let Customer of userdetailsModel">
+  
+  <tr>
+      <td *ngIf="Customer.PresentCompanyFlag==true">
+        <ul>
+     <li >
+        <span>
+            <img src="assets/Images/portfolio.png"  class="smallImages">
+           </span> 
+      {{Customer.Designation}}   at {{ Customer.CompanyName }} 
+               
+          </li>
+        </ul></td>
+    </tr>
+    <tr>
+
+
+      <td *ngIf="Customer.PreviousCompanyFlag==true">
+        <ul>
+     <li>
+        <span>
+            <img src="assets/Images/portfolio.png"  class="smallImages">
+           </span>   
+              Former    {{Customer.Designation}} at {{ Customer.CompanyName }}
+               
+          </li>
+        </ul></td>
+    </tr>
+    <tr>
+      <td *ngIf="Customer.pg!=null">
+          <span>
+              <img src="assets/Images/Education.png"  class="smallImages">
+             </span> 
+        Studied at {{Customer.pg}}</td>
+    </tr>
+    <tr>
+      <td *ngIf="Customer.Graduation!=null"> 
+          <span>
+              <img src="assets/Images/Education.png"  class="smallImages">
+             </span>
+        Studied at {{Customer.Graduation}}</td>
+    </tr>
+  <tr>
+    <td *ngIf="Customer.School!=null">
+        <span>
+            <img src="assets/Images/Education.png"  class="smallImages">
+           </span>
+      Went to {{Customer.School}}</td>
+  </tr>
+ 
+ 
+  <!-- <tr>
+    <td>
+        <span>
+            <img src="assets/Images/relationship.png"  class="smallImages">
+           </span>
+      {{Customer.relationship}}</td>
+  </tr> -->
+  <tr>
+    <td *ngIf="Customer.location!=null">
+        <span>
+            <img src="assets/Images/location.png"  class="smallImages">
+           </span>
+      Lives in {{Customer.location}}</td>
+  </tr>
+
+</table>
+
+   
+
+
+
+
+

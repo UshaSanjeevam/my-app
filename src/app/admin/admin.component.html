@@ -1,16 +1,46 @@
 <div class="light-font">
-
-           
   <nav class="navbar navbar-light dcss">
     <ul class="nav grey lighten-4 ">
-          <li class="nav-item"><a class="nav-link active" [routerLink]="['upload-image']">Upload Image</a></li>
+       
+          <li class="nav-item">
+            <a class="nav-link active" [routerLink]="['upload-image']">Upload Image</a>
+            </li>
       <li class="nav-item"><a class="nav-link active" [routerLink]="['']">Master data<datalist></datalist></a></li>
       <li class="nav-item"><a class="nav-link active" [routerLink]="['']">Master data</a></li>
-      <li class="nav-item"><a class="nav-link active" (click)="Logout()">Log out</a></li>
+      <!-- <li class="nav-item"><a class="nav-link active" (click)="Logout()">Log out</a></li> -->
     
     </ul>
     </nav>
 
+</div>
+<nav class="pull-right" >
+       
+          
+  <a data-toggle="collapse" href="javascript:void(0)" (click)="isCollapsed = !isCollapsed"
+  [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample" style="color: #dc5a0b  !important">
+      <span>
+          <i class="fa fa-user prefix white-text active" >  </i> 
+      </span> {{username}} 
+  </a>
+
+
+</nav>
+
+<div id="collapseExample" [ngbCollapse]="isCollapsed" >
+<div class="card userProfileDiv">
+<div class="card-body">
+  <li >
+<a  href="javascript:void(0)" (click)="Navigate() " >
+ <span>
+  <img src="assets/Images/boy.png" *ngIf="gender=='Male'"  height="24px" width="24px">
+  <img src="assets/Images/girl.png" *ngIf="gender=='Female'"   height="24px" width="24px">
+ </span>  View Profile 
+</a>
+
+</li>
+<li class="nav-item"><a class="nav-link active" (click)="Logout()">Log out</a></li>
+</div>
+</div>
 </div>
 
 <router-outlet></router-outlet>

@@ -17,52 +17,49 @@ export class HomeComponent implements OnInit {
   parsedata:any;
   username:any;
 constructor(private windowsService:WindowsAuthentication,  private router:Router,private windowsauthenticationservice:authenticationWindows){
-  // if (localStorage.getItem('userToken') != (null || undefined))
-  // {
-  //   this.router.navigate(['/dashboard']);
-  // }
-  // else if(localStorage.getItem('userToken') ==(null || undefined))
-  // {
-  //   this.router.navigate(['home']);
-  //  }
-
 }
 tokenParams:windowsModel;
+_tokenParams:windowsModel[];
 customer:Customer[];
 windowsModel:any;
 ngOnInit() {
+  if (localStorage.getItem('userToken') == null) 
+      {
   //calling windows service
- this.windowsauthenticationservice.getAuthentication().subscribe(data => {
-  this.tokenParams = data;
-  localStorage.setItem("WindowsLoginUser",JSON.stringify(this.tokenParams));
-},
-err => {
-  localStorage.setItem("WindowsLoginUser","ServiceIssue");
-  this.router.navigate(['/login']);
-  //throw err;
-}
-); 
-//If wndows login service is successfull redirect to dashboard
-  if(localStorage.getItem("WindowsLoginUser")!="ServiceIssue")
-{
-  if(localStorage.getItem("WindowsLoginUser")!=(null || undefined))
-{
-  this.parsedata=JSON.parse(localStorage.getItem("WindowsLoginUser"));
-  this.username= this.parsedata.authenticated;
-  var splitted = this.username.split ("\\");
-  if(splitted[0]=="LOGISTICS")
-  {
-    this.router.navigate(['/dashboard']);
-  }
-}
-}
+  this.windowsService.getwindowsUser().subscribe((data:windowsModel[])=>{this._tokenParams=data;})
+//   this.windowsService.getAuthentication().subscribe(data => {
+//  //this.windowsauthenticationservice.getAuthentication().subscribe(data => {
+//   this.tokenParams = data;
+//   localStorage.setItem("WindowsLoginUser",JSON.stringify(this.tokenParams));
+// },
+// err => {
+//   localStorage.setItem("WindowsLoginUser","ServiceIssue");
+//   this.router.navigate(['/login']);
+//   //throw err;
+// }
+// ); 
+// //If wndows login service is successfull redirect to dashboard
+//   if(localStorage.getItem("WindowsLoginUser")!="ServiceIssue")
+// {
+//   if(localStorage.getItem("WindowsLoginUser")!=(null || undefined))
+// {
+//   this.parsedata=JSON.parse(localStorage.getItem("WindowsLoginUser"));
+//   this.username= this.parsedata.authenticated;
+//   var splitted = this.username.split ("\\");
+//   if(splitted[0]=="LOGISTICS")
+//   {
+//     this.router.navigate(['/dashboard']);
+//   }
+// }
+// }
 //If wndows login service throughs error redirect to login
-else if(localStorage.getItem("WindowsLoginUser")=="ServiceIssue")
-{
-  this.router.navigate(['/login']);
-  localStorage.removeItem('WindowsLoginUser');   
-}
+// else if(localStorage.getItem("WindowsLoginUser")=="ServiceIssue")
+// {
+//   this.router.navigate(['/login']);
+//   localStorage.removeItem('WindowsLoginUser');   
+// }
 
+}
 }
   }
 

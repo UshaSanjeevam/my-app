@@ -22,7 +22,9 @@ export class CustomerListComponent  {
  
  
   ngOnInit() {
-    this.employeeService.getEmployeeList();
+    this.employeeService.getEmployeeList().then((data:any[])=>{
+      this.employeeList=data;
+    });
     
   }
  

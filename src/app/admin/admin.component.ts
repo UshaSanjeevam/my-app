@@ -12,6 +12,7 @@ export class AdminComponent implements OnInit {
 
 
   ngOnInit() {
+  
   }
   Logout() {
     localStorage.removeItem('userToken');
@@ -19,6 +20,9 @@ export class AdminComponent implements OnInit {
     localStorage.removeItem('FormsLoginUserName');   
     localStorage.clear();
     this.router.navigate(['/login']);
+  } 
+  Navigate(){
+    this.router.navigate(['/user-profile']);
   }
 
 }

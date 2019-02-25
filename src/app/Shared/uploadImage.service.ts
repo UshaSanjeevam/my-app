@@ -17,11 +17,11 @@ export class uploadimageservice{
                   'Content-Type':  'application/json'
                 })
               };
-            const endpoint="http://localhost:42512/api/MasterImageUpload";
+            const endpoint="http://localhost:2451/api/Image";
             const formdata:FormData =new FormData();
             formdata.append('image',FiletoUpload,FiletoUpload.name);
             formdata.append('Imagecaption','caption');
-return this.http.post<any>(endpoint,formdata,httpOptions)
+return this.http.post<any>(endpoint,formdata)
 
         
     }
@@ -35,4 +35,12 @@ return this.http.post<any>(endpoint,formdata,httpOptions)
 
     
 }
+postFiless(caption: string, fileToUpload: File) {
+    const endpoint = 'http://localhost:2451/api/UploadImage';
+    const formData: FormData = new FormData();
+    formData.append('Image', fileToUpload, fileToUpload.name);
+    formData.append('ImageCaption', caption);
+    return this.http
+      .post(endpoint, formData);
+  }
 }

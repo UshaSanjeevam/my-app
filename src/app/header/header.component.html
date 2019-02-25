@@ -19,20 +19,47 @@
         <li class="nav-item">
             <a class="nav-link active" [routerLink]="['registration']">Registration</a>
         </li> -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link active"  (click)="Logout()">Logout</a>
-        </li>
+        </li> -->
        
         
     </ul>
-    <nav class="pull-right ">
+    <nav class="pull-right" >
        
-            <i class="fa fa-user prefix white-text active"></i>
-            
-         <label for="form3" class="active">   {{username}}</label>
+          
+            <a data-toggle="collapse" href="javascript:void(0)" (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample" style="color: #dc5a0b  !important">
+                <span>
+                    <i class="fa fa-user prefix white-text active" >  </i> 
+                </span> {{username}} 
+            </a>
+       
        
     </nav>
   </nav>
-  
+  <div id="collapseExample" [ngbCollapse]="isCollapsed" >
+    <div class="card userProfileDiv">
+      <div class="card-body">
+      <li >
+          <a  href="javascript:void(0)" (click)="Navigate() " >
+           <span>
+            <img src="assets/Images/boy.png" *ngIf="gender=='Male'"  height="24px" width="24px">
+            <img src="assets/Images/girl.png" *ngIf="gender=='Female'"   height="24px" width="24px">
+           </span>  View Profile 
+          </a>
+          
+      </li>
+      <li class="nav-item" style="margin-left: -12px;">
+        <a class="nav-link active"  (click)="Logout()">
+           <span>
+                <img src="assets/Images/logout.png"  height="24px" width="24px"> 
+           </span> 
+            
+            Logout</a>
+    </li>
+      </div>
+    </div>
+  </div>
     <router-outlet></router-outlet>
     

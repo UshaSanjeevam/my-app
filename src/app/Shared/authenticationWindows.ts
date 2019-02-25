@@ -19,10 +19,6 @@ export class authenticationWindows {
     constructor(private http : Http,private router:Router) {
       this.actionUrl = 'http://localhost:11462/api/values';
      }
-  
-  
-        
-        
             getAuthentication():any {
             return  this.http.get(this.baseUrl, this.options)
             .pipe(map(res => res.json()));

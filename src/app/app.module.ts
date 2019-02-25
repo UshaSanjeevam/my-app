@@ -43,6 +43,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
 import { AdminComponent } from './admin/admin.component';
 import { uploadimageservice } from './Shared/uploadImage.service';
+import{userDetailsService} from './Shared/userDetailsService';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full'},
@@ -56,12 +58,11 @@ const routes: Routes = [
 // },
 { path: "home", component:HomeComponent},
 { path: "login", component:LoginComponent},
-{path: "admin",component: AdminComponent,
+{path: "admin", component: AdminComponent,
 children:
 [
     { path: 'upload-image', component: UploadImageComponent},
-] ,
-canActivate: [ AuthGuard ] 
+] 
 },
   { path:'dashboard',component:DashboardComponent,
   children: [
@@ -73,10 +74,13 @@ canActivate: [ AuthGuard ]
   { path: "progressbar", component: ProgressbarComponent },
   { path: "registration", component: RegistrationComponent },
   { path: "logout", component: LogoutComponent },
+  
   ]
   ,
    canActivate: [ AuthGuard ] 
   },
+ 
+  {path :'user-profile', component:UserProfileComponent},
   {path :"global-error", component:GlobalErrorComponent},
   {path: '**', component:MainComponent},
 ]
@@ -108,6 +112,7 @@ canActivate: [ AuthGuard ]
     RegistrationComponent,
     UploadImageComponent,
     AdminComponent,
+    UserProfileComponent,
     
 
   ],
@@ -133,7 +138,7 @@ canActivate: [ AuthGuard ]
   //   useClass: CustomErrorHandlerService
   // },
   loginAuthenticateService,AuthGuard,WindowsAuthentication,authenticationWindows,uploadimageservice
-  ,
+  ,userDetailsService,
   {
     provide : HTTP_INTERCEPTORS,
     useClass : AuthInterceptor,

@@ -19,10 +19,18 @@ export class CustomerComponent  {
     if (form != null)
       form.reset();
     this.employeeService.selectedEmployee = {
-      CustomerID: null,
+      CustomerID: '',
       CompanyName: '',
       ContactName: '',
-      ContactTitle: ''
+      ContactTitle: '',
+      Address:'',
+      City :'',
+      Region:'',
+     PostalCode:'',
+      Country:'',
+      Phone:'',
+      Fax:''
+
     }
   }
  

@@ -15,7 +15,7 @@ private auth: Auth;
 private options = new RequestOptions({ withCredentials: true });
    // employeeIdentity:windowsModel[];
     tokenParams:windowsModel;
-  constructor(private http : Http,private router:Router) {
+  constructor(private http : Http,private router:Router,private _http:HttpClient) {
     this.actionUrl = 'http://localhost:11462/api/values';
    }
 
@@ -35,8 +35,7 @@ private options = new RequestOptions({ withCredentials: true });
     
 )
         }
-        HandleException(
-            err:Response):any{
+        HandleException(err:Response):any{
                 if(err.status< 200){
                     localStorage.setItem("Authenticated","ServiceIssue");
                  
@@ -57,6 +56,15 @@ private options = new RequestOptions({ withCredentials: true });
         console.error(error); 
         return Observable.throw(error.json().error || 'Server error'); 
         } 
+
+      
+           
+        
+           
+            getwindowsUser(): Observable<windowsModel[]> {
+              return this._http.get<windowsModel[]>(this.baseUrl,  {withCredentials: true})
+            
+           }
     }
     
 

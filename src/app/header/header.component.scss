@@ -1,7 +1,17 @@
 .dcss{background: url(https://stage.agility.com/TrackingGO2UAT/image/theme/bg-header.gif) no-repeat !important;
         
 }
-a{color: #fdfdfd  !important;}
+a{color: hsl(0, 62%, 50%)  !important;}
 .pull-right {
     float: right;
+    width: 140px;
   }
+  .userProfileDiv{
+  margin-left: 70rem;
+  height: 200px;
+  width: auto;
+  }
+  li{
+    list-style-type:none
+  }
+  
